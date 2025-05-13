@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.6",
+    "serve": "^14.2.4",
+    "tailwindcss": "^4.1.6",
+    "vue-router": "^4.5.1"
+  }
+}
