@@ -1,7 +1,7 @@
 <template>
   <footer class="fixed bottom-7 left-1/2 transform -translate-x-1/2 z-50">
     <div
-      class="bg-gray-100 rounded-full shadow-md px-6 py-2 flex items-center space-x-4 relative"
+      class="bg-gray-100/95 saturate-200 rounded-full shadow-md px-6 py-2 flex items-center space-x-4 relative backdrop-blur-xs"
     >
       <div
         class="absolute w-13 h-13 bg-white rounded-full transition-transform duration-300"

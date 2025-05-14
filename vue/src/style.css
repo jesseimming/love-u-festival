@@ -1,1 +1,44 @@
 @import "tailwindcss";
+
+body {
+  font-family: "Sansation";
+  background-color: #f3f4f6;
+}
+
+@font-face {
+  font-family: "Sansation";
+  src: url("/fonts/Sansation-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SansationBold";
+  src: url("/fonts/Sansation-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: bold;
+}
+
+@layer utilities {
+  .sansation-bold {
+    font-family: "SansationBold";
+    font-weight: bold;
+  }
+}
+@theme {
+  --color-vermilion: #f03228;
+
+  --color-cerulean: #247ba0;
+
+  --color-saffron: #e3b505;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
