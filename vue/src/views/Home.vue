@@ -12,6 +12,11 @@
       <img class="w-95 h-35 mt-7 rounded-2xl" src="../assets/line-up.png" />
     </div>
 
+    <h1 class="font-bold text-2xl ml-6 mt-6">
+      Stages<span class="text-4xl font-bold text-vermilion">.</span>
+    </h1>
+    <h1 class="text-xs ml-6">All the stages at U Festival</h1>
+
     <div class="flex flex-col space-y-6 px-4 mt-6 pb-28">
       <!-- First Section -->
       <div

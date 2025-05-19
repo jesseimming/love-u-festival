@@ -34,8 +34,8 @@ export default {
     const navItems = [
       { to: "/", icon: "home" },
       { to: "/map", icon: "map" },
-      { to: "/schedule", icon: "table_view" },
-      { to: "/", icon: "info" },
+      { to: "/schedule", icon: "calendar_month" },
+      { to: "/info", icon: "info" },
     ];
     const activeIndex = ref(0);
 

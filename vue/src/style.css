@@ -41,4 +41,51 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .modal-enter-from,
+  .modal-leave-to {
+    @apply opacity-0;
+  }
+  .modal-enter-active,
+  .modal-leave-active {
+    @apply transition-opacity duration-200 ease-in;
+  }
+  .modal-enter-to,
+  .modal-leave-from {
+    @apply opacity-100;
+  }
+
+  .modal-content-enter-from {
+    @apply scale-90 opacity-0;
+  }
+  .modal-content-enter-active {
+    @apply transition-all duration-300;
+    animation: bounce-in 0.3s;
+  }
+  .modal-content-enter-to {
+    @apply scale-100 opacity-100;
+  }
+  .modal-content-leave-from {
+    @apply scale-100 opacity-100;
+  }
+  .modal-content-leave-active {
+    @apply transition-all duration-200;
+  }
+  .modal-content-leave-to {
+    @apply scale-90 opacity-0;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
