@@ -2,16 +2,21 @@
   <div class="fixed inset-0 z-0">
     <div id="map" class="w-full h-full"></div>
     <img
-      src="../assets/legenda.png"
+      src=""
       alt="Legenda"
       class="fixed top-2 right-2 w-45 sm:w-32 md:w-40 h-auto bg-white bg-opacity-80 opacity-80 rounded-xl shadow-lg p-1 sm:p-2 z-[9999] pointer-events-none"
     />
   </div>
 </template>
 
+../assets/legenda.png
+
 <script setup>
+import React, { Component } from "react";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { onMounted } from "vue";
 import L from "leaflet";
+
 
 onMounted(() => {
   const imageUrl = new URL(
