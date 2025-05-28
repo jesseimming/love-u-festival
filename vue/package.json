@@ -10,12 +10,17 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",
+    "leaflet": "^1.9.4",
+    "mapbox-gl": "^3.12.0",
     "material-icons": "^1.13.14",
+    "panzoom": "^9.4.3",
     "react-zoom-pan-pinch": "^3.7.0",
     "serve": "^14.2.4",
     "tailwindcss": "^4.1.6",
     "vite-pwa-plugin": "^0.21.1",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-panzoom": "^1.1.6",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
