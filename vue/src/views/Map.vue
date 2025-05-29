@@ -29,13 +29,17 @@ export default {
       crs: L.CRS.Simple,
       zoomControl: false,
       maxBounds: bounds,
-      maxBoundsViscosity: 1.0, 
+      maxBoundsViscosity: 5.0, 
     });
 
     this.map.fitBounds(bounds);
-    const zoom = this.map.getZoom();
 
-    this.map.setMinZoom(zoom);
+     if (window.innerWidth < 768) {
+    this.map.setZoom(0);
+  }
+
+  const zoom = this.map.getZoom();
+  this.map.setMinZoom(zoom);
 
     L.imageOverlay(mapImage, bounds).addTo(this.map);
 

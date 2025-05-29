@@ -3,25 +3,25 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const newsSlides = [
   {
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg",
-    title: "The World Ended Yesterday",
-    text: "You know what we need, Hobbes? We need an attitude. Yeah, you can't be cool if you don't have an attitude.",
-    dateday: "28",
+    img: "https://content.presspage.com/uploads/1802/c1920_vincentpatty-2.jpg?73345",
+    title: "Jiggy Dje still coming!",
+    text: "The legend himself is still coming to U Festival. LETS GOOO!!!",
+    dateday: "22",
     datemonth: "Oct"
   },
   {
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample24.jpg",
-    title: "An Abstract Post Heading",
-    text: "Sometimes the surest sign that intelligent life exists elsewhere in the universe is that none of it has tried to contact us.",
-    dateday: "17",
-    datemonth: "Nov"
+    img: "https://www.kindamuzik.net/gfx/jiggy-grp-1006.jpg",
+    title: "Jiggy",
+    text: "Djé",
+    dateday: "22",
+    datemonth: "Oct"
   },
   {
-    img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample25.jpg",
-    title: "Down with this sort of thing",
-    text: "I don't need to compromise my principles, because they don't have the slightest bearing on what happens to me anyway.",
-    dateday: "01",
-    datemonth: "Dec"
+    img: "https://www.vikingentertainment.nl/uploads/product/groot/jiggy-dje-1549893443.jpg",
+    title: "Vincent Patty Wetty",
+    text: "Roblox tycoon: Vincent Patty wet at U Festival.",
+    dateday: "22",
+    datemonth: "Oct"
   }
 ];
 
@@ -31,7 +31,7 @@ let intervalId = null;
 onMounted(() => {
   intervalId = setInterval(() => {
     currentSlide.value = (currentSlide.value + 1) % newsSlides.length;
-  }, 5000);
+  }, 4500);
 });
 
 onUnmounted(() => {
@@ -56,7 +56,7 @@ onUnmounted(() => {
       News<span class="text-4xl font-bold text-vermilion">.</span>
     </h1>
     <h1 class="text-xs ml-6">See what is happening:</h1>
-    <div class="flex justify-center items-center flex-wrap px-2 mt-6">
+    <div class="flex justify-center items-center flex-wrap px-2 mt-2">
   <figure class="relative bg-white shadow-md rounded-lg overflow-hidden w-full max-w-xs min-w-[350px] mx-2 my-4 text-left group transition-all duration-700">
     <div class="overflow-hidden">
       <img

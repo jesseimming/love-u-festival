@@ -6,7 +6,8 @@
     "info": "Jiggy DJE blends hip-hop, Afrobeat, and house into high-energy sets that light up any stage. His sharp mixing and vibrant vibe keep the crowd moving nonstop.",
     "location": "Mainstage",
     "month": "NOV",
-    "day": "22"
+    "day": "22",
+    "youtube": "https://www.youtube.com/watch?v=SN1u5NHrANE"
   },
   {
     "name": "Armin van Buuren",
@@ -15,7 +16,8 @@
     "info": "Five-time “World’s No. 1 DJ” and trance icon, Armin delivers euphoric, high-energy sets that have headlined festivals from Tomorrowland to Ultra. His uplifting melodies and impeccable mixing keep crowds dancing for hours.",
     "location": "Mainstage",
     "month": "NOV",
-    "day": "22"
+    "day": "22",
+    "youtube": "https://www.youtube.com/watch?v=SN1u5NHrANE"
   },
   {
     "name": "Martin Garrix",
@@ -24,7 +26,8 @@
     "info": "Broke through as a teenager with “Animals,” Martin Garrix has become one of the biggest names in EDM. His anthemic big-room tracks and stadium-sized drops make him a festival favorite across Europe.",
     "location": "Mainstage",
     "month": "NOV",
-    "day": "23"
+    "day": "23",
+    "youtube": "https://www.youtube.com/watch?v=UyX8uzDZ5XM"
   },
   {
     "name": "Kensington",
@@ -33,7 +36,8 @@
     "info": "Rotterdam-born indie rock quintet known for soaring choruses and driving guitar riffs. Hits like “Streets” and “Riddles” showcase their knack for arena-ready hooks and emotionally charged lyricism.",
     "location": "Mainstage",
     "month": "NOV",
-    "day": "23"
+    "day": "23",
+    "youtube": "https://www.youtube.com/watch?v=1xoDhvuccNk"
   },
   {
     "name": "Within Temptation",
@@ -42,16 +46,18 @@
     "info": "Symphonic metal pioneers fronted by Sharon den Adel. Their cinematic soundscapes and operatic vocals (think “Ice Queen,” “Mother Earth”) translate into dramatic, visually stunning festival performances.",
     "location": "The Club",
     "month": "NOV",
-    "day": "23"
+    "day": "23",
+    "youtube": "https://www.youtube.com/watch?v=bAVs7TDCCCM"
   },
   {
-    "name": "De staat",
+    "name": "De Staat",
     "desc": "Experimental rock innovators",
     "img": "destaat.webp",
     "info": "Experimental rock outfit from Nijmegen, blending funky grooves with angular guitar work and theatrical stagecraft. Tracks like “Witch Doctor” and “Down Town” highlight their genre-bending approach and infectious energy.",
     "location": "The Club",
     "month": "NOV",
-    "day": "22"
+    "day": "22",
+    "youtube": "https://www.youtube.com/watch?v=O1eluTOuPz0"
   },
   {
     "name": "Chef’Special",
@@ -60,7 +66,8 @@
     "info": "A four-piece from Haarlem mixing funk, pop, rock and hip-hop. Their upbeat, genre-fluid sound on songs like “Amigo” and “In Your Arms” makes for joyous, dance-floor-friendly live shows.",
     "location": "The Club",
     "month": "NOV",
-    "day": "22"
+    "day": "22",
+    "youtube": "https://www.youtube.com/watch?v=y75pzxIKa0o"
   },
   {
     "name": "Navarone",
@@ -69,7 +76,8 @@
     "info": "Utrecht’s hard-hitting rock four-piece, delivering riff-driven anthems and dynamic vocals. With a live reputation for raw intensity, they’re tailor-made for late-night main stages.",
     "location": "The Lake",
     "month": "NOV",
-    "day": "22"
+    "day": "22",
+    "youtube": "https://www.youtube.com/watch?v=-UsHueNTgCc"
   },
   {
     "name": "Dotan",
@@ -78,7 +86,8 @@
     "info": "Folk-pop singer-songwriter whose intimate voice and acoustic arrangements (notably on “Home”) have earned him platinum sales and sell-out shows. His heartfelt storytelling connects deeply on festival acoustic stages.",
     "location": "The Lake",
     "month": "NOV",
-    "day": "23"
+    "day": "23",
+    "youtube": "https://www.youtube.com/watch?v=6F4wWHdq4y4"
   },
   {
     "name": "Eefje de Visser",
@@ -87,7 +96,8 @@
     "info": "Indie-pop artist crafting atmospheric, electronic-tinged songs. Her hypnotic vocals and lush production (as heard on “Ongeveer”) create a dreamlike vibe perfect for twilight festival slots.",
     "location": "The Lake",
     "month": "NOV",
-    "day": "23"
+    "day": "23",
+    "youtube": "https://www.youtube.com/watch?v=aC2XGUjLIos"
   },
   {
     "name": "Froukje",
@@ -96,7 +106,8 @@
     "info": "Breakthrough pop singer Froukje Veenstra combines candid lyrics with catchy, synth-driven hooks. Since her 2021 debut, she’s become a voice of her generation—ideal for mid-day festival stages.",
     "location": "Hanggar",
     "month": "NOV",
-    "day": "23"
+    "day": "23",
+    "youtube": "https://www.youtube.com/watch?v=B5eKW9vtHoA"
   },
   {
     "name": "Spinvis",
@@ -105,6 +116,7 @@
     "info": "Erik de Jong performs under the moniker Spinvis, crafting poetic, collage-like songs that blend spoken-word snippets, lo-fi electronics and wistful pop. Since his debut album in 2002—recorded in his attic—he’s become a fixture of Dutch indie, renowned for narratives that feel both intimate and surreal.",
     "location": "Hanggar",
     "month": "NOV",
-    "day": "22"
+    "day": "22",
+    "youtube": "https://www.youtube.com/watch?v=kzUR1XUdJu0"
   }
 ]
