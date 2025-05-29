@@ -5,6 +5,8 @@ const showBereik = ref(false);
 const showLocker = ref(false);
 const showFAQ = ref(false);
 const showGlu = ref(false);
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 
 const FESTIVAL_LAT = 52.07887103329403;
 const FESTIVAL_LON = 5.059573437544879;
@@ -23,9 +25,9 @@ const openMap = (e) => {
   <div class="bg-gray-100 px-6 h-full pb-28 min-h-screen">
     <div class="flex flex-col justify-center h-10">
       <h1 class="font-bold text-2xl">
-        Information<span class="text-4xl font-bold text-vermilion">.</span>
+        {{ t("info") }}<span class="text-4xl font-bold text-vermilion">.</span>
       </h1>
-      <h1 class="text-xs">Information about U festival.</h1>
+      <h1 class="text-xs">{{ t("infoText") }}</h1>
     </div>
 
     <div
@@ -39,7 +41,7 @@ const openMap = (e) => {
         :class="showAlgemeen ? 'rotate-180' : ''"
         alt="dropdown"
       />
-      <h1 class="text-2xl py-4 font-semibold">General & Contact</h1>
+      <h1 class="text-2xl py-4 font-semibold">{{ t("general") }}</h1>
       <transition name="zoom">
         <div
           v-if="showAlgemeen"
@@ -48,13 +50,12 @@ const openMap = (e) => {
           :class="showAlgemeen ? 'scale-100 opacity-100' : ''"
         >
           <p>
-            The ❤️U Festival is for (new) students in the Utrecht region and
-            complements the UIT.
+            {{ t("generalText") }}
           </p>
-          <h2 class="font-semibold mt-4">Address</h2>
-          <div>Location: Strijkviertel, Utrecht</div>
+          <h2 class="font-semibold mt-4">{{ t("adress") }}</h2>
+          <div>{{ t("adressText") }}</div>
           <div class="mt-2">
-            <span class="font-semibold">Navigation address:</span>
+            <span class="font-semibold">{{ t("navigation") }}</span>
             <div class="flex items-center gap-2 mt-2">
               <button
                 @click.stop="openMap"
@@ -78,12 +79,12 @@ const openMap = (e) => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   ></path>
                 </svg>
-                Open in Maps
+                {{ t("navButtonText") }}
               </button>
             </div>
           </div>
-          <div class="mt-4 font-semibold">Date & Opening Hours</div>
-          <div>Saturday, 6 September 2025 - 12:00 to 23:00</div>
+          <div class="mt-4 font-semibold">{{ t("date") }}</div>
+          <div>{{ t("dateText") }}</div>
         </div>
       </transition>
     </div>
@@ -98,7 +99,7 @@ const openMap = (e) => {
         src="../assets/dropdown.png"
         class="absolute top-4 right-4 w-8 h-8="
       />
-      <h1 class="text-2xl py-4 font-semibold">Accessibility</h1>
+      <h1 class="text-2xl py-4 font-semibold">{{ t("access") }}</h1>
       <transition name="zoom">
         <div
           v-if="showBereik"
@@ -106,36 +107,33 @@ const openMap = (e) => {
           class="pb-4 transition-all duration-300 origin-top scale-95 opacity-0"
           :class="showBereik ? 'scale-100 opacity-100' : ''"
         >
-          <h2 class="font-semibold mt-2">Bike</h2>
+          <h2 class="font-semibold mt-2">{{ t("bike") }}</h2>
           <p>
-            A large free bike parking area is available where you can leave your
-            bike all day.
+            {{ t("bikeText") }}
           </p>
           <br />
-          <h2 class="font-semibold mt-2">Car</h2>
+          <h2 class="font-semibold mt-2">{{ t("car") }}</h2>
           <p>
-            You can buy a parking ticket. Parking is available at P+R Papendorp
-            — follow the signs “P online ticket.” Didn't buy a ticket in
-            advance? You can buy one from the parking attendant on-site (PIN
-            ONLY). Note: FULL=FULL.
+            {{ t("carText") }}
           </p>
           <br />
-          <h2 class="font-semibold mt-2">Public Transport</h2>
-          <p>Coming by public transport to Lief? Plan your trip via 9292.nl.</p>
-          <br />
-          <h2 class="font-semibold mt-2">Shuttle Bus</h2>
+          <h2 class="font-semibold mt-2">{{ t("public") }}</h2>
+          <p v-html="t('publicText')"></p>
+          <a class="text-xl underline" href="https://9292.nl" target="_blank"
+            >9292.nl</a
+          >
+          <br /><br />
+          <h2 class="font-semibold mt-2">{{ t("shuttle") }}</h2>
           <p>
-            From Utrecht Central Station, you can take our free shuttle bus to
-            the festival grounds. You’ll find the bus at Mineurslaan at the
-            station. Follow the white signs with black arrows and '❤️U
-            Festival'. The bus runs to the festival between 12:00 and 19:00, and
-            returns to the station starting at 21:00.
+            {{ t("shuttleText") }}
           </p>
           <br />
-          <h2 class="font-semibold mt-2">Taxi + Kiss & Ride</h2>
+          {{ t("shuttleText2") }}
+          <br />
+          <br />
+          <h2 class="font-semibold mt-2">{{ t("taxi") }}</h2>
           <p>
-            Navigate to Strijkviertel, De Meern (Utrecht). Follow the signs
-            "Kiss & Ride ❤️U Festival" when you're near the festival area.
+            {{ t("taxiText") }}
           </p>
         </div>
       </transition>
@@ -151,7 +149,7 @@ const openMap = (e) => {
         src="../assets/dropdown.png"
         class="absolute top-4 right-4 w-8 h-8"
       />
-      <h1 class="text-2xl py-4 font-semibold">Lockers</h1>
+      <h1 class="text-2xl py-4 font-semibold">{{ t("lockers") }}</h1>
       <transition name="zoom">
         <div
           v-if="showLocker"
@@ -160,16 +158,14 @@ const openMap = (e) => {
           :class="showLocker ? 'scale-100 opacity-100' : ''"
         >
           <p>
-            Lockers are available on the festival grounds where you can safely
-            store your belongings!
+            {{ t("lockersText1") }}
           </p>
           <br />
           <p>
-            They fit 3 to 4 jackets. Good to know: you can open and close your
-            locker as many times as you want throughout the day.
+            {{ t("lockersText2") }}
           </p>
           <br />
-          <p>It is not possible to reserve a locker online.</p>
+          <p>{{ t("lockersText3") }}</p>
         </div>
       </transition>
     </div>
@@ -184,7 +180,7 @@ const openMap = (e) => {
         src="../assets/dropdown.png"
         class="absolute top-4 right-4 w-8 h-8"
       />
-      <h1 class="text-2xl py-4 font-semibold">FAQ</h1>
+      <h1 class="text-2xl py-4 font-semibold">{{ t("faq") }}</h1>
       <transition name="zoom">
         <div
           v-if="showFAQ"
@@ -192,28 +188,20 @@ const openMap = (e) => {
           class="pb-4 transition-all duration-300 origin-top scale-95 opacity-0"
           :class="showFAQ ? 'scale-100 opacity-100' : ''"
         >
-          <h2 class="font-semibold mt-2">I use medication. What now?</h2>
+          <h2 class="font-semibold mt-2">{{ t("faqQ1") }}</h2>
           <p>
-            You're allowed to bring medication in a dosage needed for one day. A
-            doctor’s note or medication passport is required. Security will
-            review your documentation and check the medication. If necessary
-            (e.g., in combination with alcohol), the first aid team may hold
-            your medication, and you can only take it under their supervision.
+            {{ t("faqA1") }}
           </p>
           <br />
           <h2 class="font-semibold mt-2">
-            Can I leave the festival grounds temporarily?
+            {{ t("faqQ2") }}
           </h2>
           <p>
-            Unfortunately not. To ensure the safety of all visitors, we cannot
-            allow re-entry once you've left. We cannot monitor what happens
-            outside or in what state someone may return. There are no
-            exceptions. We have plenty of lounge areas, food stands, and bars to
-            keep you entertained all day.
+            {{ t("faqA2") }}
           </p>
           <br />
-          <h2 class="font-semibold mt-2">Are there lockers?</h2>
-          <p>Yes! You can rent medium and large lockers at the venue.</p>
+          <h2 class="font-semibold mt-2">{{ t("faqQ3") }}</h2>
+          <p>{{ t("faqA3") }}</p>
         </div>
       </transition>
     </div>
@@ -228,7 +216,7 @@ const openMap = (e) => {
         src="../assets/dropdown.png"
         class="absolute top-4 right-4 w-8 h-8"
       />
-      <h1 class="text-2xl py-4 font-semibold">Golden GLU</h1>
+      <h1 class="text-2xl py-4 font-semibold">{{ t("glu") }}</h1>
       <transition name="zoom">
         <div
           v-if="showGlu"
@@ -237,13 +225,11 @@ const openMap = (e) => {
           :class="showGlu ? 'scale-100 opacity-100' : ''"
         >
           <p>
-            Students from GLU have special privileges during the festival and
-            can be identified by a golden wristband.
+            {{ t("gluText1") }}
           </p>
           <br />
           <p>
-            With this golden wristband, they can use the golden toilets and the
-            gold-marked bar points without waiting in line.
+            {{ t("gluText2") }}
           </p>
         </div>
       </transition>

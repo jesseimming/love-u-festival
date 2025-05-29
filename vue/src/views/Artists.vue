@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import artists from "../assets/artists.json";
+import { useI18n } from "vue-i18n";
+const { t, locale } = useI18n(); // <-- add locale here
 
 const getImg = (img) => new URL(`../assets/${img}`, import.meta.url).href;
 
@@ -15,29 +17,39 @@ function closeModal() {
   showModal.value = false;
   selectedArtist.value = null;
 }
+
+const artistInfo = computed(() => {
+  if (!selectedArtist.value) return "";
+  if (locale.value === "nl") return selectedArtist.value.info_nl;
+  return selectedArtist.value.info_en;
+});
 </script>
 
 <template>
   <div class="bg-gray-100">
-    <div class="flex flex-col ml-6 justify-center h-10">
+    <div class="flex flex-col ml-6 justify-center h-10 mt-8">
       <h1 class="font-bold text-2xl">
-        Artists<span class="text-4xl font-bold text-vermilion">.</span>
+        {{ t("artists")
+        }}<span class="text-4xl font-bold text-vermilion">.</span>
       </h1>
-      <h1 class="text-xs">Discover the artists at U Festival.</h1>
+      <h1 class="text-xs">{{ t("artistsText") }}</h1>
     </div>
     <div class="flex flex-col space-y-6 px-3 mt-6 pb-28">
       <div
         v-for="artist in artists"
         :key="artist.name"
-        class="flex justify-center content-center bg-white w-full rounded-2xl px-4 py-6 cursor-pointer"
+        class="flex items-start bg-white w-full rounded-2xl px-4 py-6 cursor-pointer relative"
         @click="openModal(artist)"
       >
-        <img class="rounded-2xl w-25 h-25" :src="getImg(artist.img)" />
-        <div class="flex flex-col px-3">
+        <img
+          class="rounded-2xl w-32 h-32 object-cover flex-shrink-0"
+          :src="getImg(artist.img)"
+        />
+        <div class="flex flex-col px-3 justify-center">
           <h1 class="font-bold text-4xl">{{ artist.name }}</h1>
           <h1 class="text-xl">{{ artist.desc }}</h1>
           <div
-            class="absolute right-6 mt-20 flex flex-col items-center text-vermilion text-sm font-bold"
+            class="absolute right-6 bottom-3 flex flex-col items-center text-vermilion text-sm font-bold"
           >
             <span>{{ artist.month }}</span>
             <span>{{ artist.day }}</span>
@@ -82,7 +94,7 @@ function closeModal() {
                     </div>
                   </div>
                 </div>
-                <p class="mt-3">{{ selectedArtist?.info }}</p>
+                <p class="mt-3">{{ artistInfo }}</p>
               </div>
             </div>
           </div>

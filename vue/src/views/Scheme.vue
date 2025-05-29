@@ -4,6 +4,8 @@ import artists from "../assets/artists.json";
 const getImg = (img) => new URL(`../assets/${img}`, import.meta.url).href;
 const showModal = ref(false);
 const selectedArtist = ref(null);
+import { useI18n } from "vue-i18n";
+const { t, locale } = useI18n();
 
 function openModal(artistName) {
   selectedArtist.value = artists.find((a) => a.name === artistName);
@@ -210,15 +212,22 @@ function toMinutes(str) {
   const [h, m] = str.split(":").map(Number);
   return h * 60 + m;
 }
+
+const artistInfo = computed(() => {
+  if (!selectedArtist.value) return "";
+  if (locale.value === "nl") return selectedArtist.value.info_nl;
+  return selectedArtist.value.info_en;
+});
 </script>
 
 <template>
   <div class="w-full max-w-6xl mx-auto px-2">
     <div class="flex flex-col ml-6 justify-center h-10">
       <h1 class="font-bold text-2xl">
-        Scheme<span class="text-4xl font-bold text-vermilion">.</span>
+        {{ t("scheme")
+        }}<span class="text-4xl font-bold text-vermilion">.</span>
       </h1>
-      <h1 class="text-xs">The festival scheme at U Festival.</h1>
+      <h1 class="text-xs">{{ t("schemeText2") }}</h1>
     </div>
 
     <div class="w-full flex justify-center my-8">
@@ -340,7 +349,7 @@ function toMinutes(str) {
                               params="autoplay=1"
                             ></lite-youtube>
                           </div>
-                          <p class="mt-4">{{ selectedArtist?.info }}</p>
+                          <p class="mt-4">{{ artistInfo }}</p>
                         </div>
                       </div>
                     </div>
