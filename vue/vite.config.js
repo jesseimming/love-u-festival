@@ -35,9 +35,18 @@ export default defineConfig({
         ],
       },
       workbox: {
+        globPatterns: [
+          "**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp,woff2,woff,ttf,eot,json}",
+        ],
+        additionalManifestEntries: [
+          {
+            url: "https://fonts.googleapis.com/css?family=Material+Symbols+Rounded|Material+Icons+Outlined",
+            revision: null,
+          },
+          // Add any other external resources you want to precache
+        ],
         runtimeCaching: [
           {
-            // StaleWhileRevalidate for static resources
             urlPattern: ({ request }) =>
               ["style", "script", "worker"].includes(request.destination),
             handler: "StaleWhileRevalidate",
@@ -45,19 +54,36 @@ export default defineConfig({
               cacheName: "static-resources",
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                maxAgeSeconds: 60 * 60 * 24 * 30,
               },
             },
           },
           {
-            // CacheFirst for images
             urlPattern: ({ request }) => request.destination === "image",
             handler: "CacheFirst",
             options: {
               cacheName: "images",
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 60, // 60 days
+                maxAgeSeconds: 60 * 60 * 24 * 60,
+              },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "google-fonts-stylesheets",
+            },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-fonts-webfonts",
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
               },
             },
           },

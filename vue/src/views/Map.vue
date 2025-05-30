@@ -1,8 +1,14 @@
 <template>
   <div id="map"></div>
+  <img
+    :src="legendaImg"
+    alt="Legenda"
+    class="opacity-100 fixed top-4 right-4 w-33 bg-white/90 rounded-lg shadow p-2 z-[1001] select-none pointer-events-none"
+  />
 </template>
 
 <script setup>
+import legendaImg from "../assets/legenda.png";
 import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import L from "leaflet";
@@ -20,9 +26,24 @@ import markerBar from "../assets/bar.svg";
 import markerFA from "../assets/help.svg";
 import markerFood from "../assets/food.svg";
 import markerEntrance from "../assets/marker_begin.svg";
-import userMarkerIcon from "../assets/userMarker.svg";
+import userMarkerIcon from "../assets/jiggy_user.png";
+import artists from "../assets/artists.json";
+
+const getImg = (img) => new URL(`../assets/${img}`, import.meta.url).href;
 
 const { t } = useI18n();
+const stageLabelToLocation = {
+  stage1: "Mainstage",
+  stage2: "The Lake",
+  stage3: "The Club",
+  stage4: "Hanggar",
+};
+
+function getArtistsByStage(stageLabel) {
+  const location = stageLabelToLocation[stageLabel];
+  if (!location) return [];
+  return artists.filter((artist) => artist.location === location);
+}
 
 const markers = [
   {
@@ -132,26 +153,29 @@ const markers = [
   },
 ];
 
+["stage1", "stage2", "stage3", "stage4"].forEach((stage) => {
+  const marker = markers.find((m) => m.label === stage);
+  if (marker) {
+    marker.artists = getArtistsByStage(stage);
+  }
+});
+
+const MAP_MIN = [0, 0];
+const MAP_MAX = [980, 1680];
+let currentPos = [175, 1140];
+
 onMounted(() => {
   const map = L.map("map", {
     crs: L.CRS.Simple,
     zoomControl: false,
-    maxBounds: [
-      [0, 0],
-      [980, 1680],
-    ],
-    maxBoundsViscosity: 5.0,
+    maxBounds: [MAP_MIN, MAP_MAX],
+    maxBoundsViscosity: 1.0,
   });
-  map.fitBounds([
-    [0, 0],
-    [980, 1680],
-  ]);
+
+  map.fitBounds([MAP_MIN, MAP_MAX]);
   if (window.innerWidth < 768) map.setZoom(0);
   map.setMinZoom(map.getZoom());
-  L.imageOverlay(mapImage, [
-    [0, 0],
-    [980, 1680],
-  ]).addTo(map);
+  L.imageOverlay(mapImage, [MAP_MIN, MAP_MAX]).addTo(map);
 
   const icon = (url, size = [42, 42]) =>
     L.icon({
@@ -164,48 +188,106 @@ onMounted(() => {
   markers.forEach((m) =>
     L.marker(m.pos, { icon: icon(m.icon, m.size || [42, 42]) })
       .addTo(map)
-      .bindPopup(`<b>${t(m.label)}</b><br>${t(m.text)}`)
+      .bindPopup(() => {
+        const title = `<b>${t(m.label)}</b><br>${t(m.text)}`;
+        if (m.artists && m.artists.length > 0) {
+          const artistList = m.artists
+            .map(
+              (a) => `
+            <div style="margin-top: 6px; display: flex; align-items: center;">
+              <img src="${getImg(a.img)}" alt="${
+                a.name
+              }" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%; margin-right: 8px;" />
+              <span>${a.name}</span>
+            </div>`
+            )
+            .join("");
+          return `${title}<br>${artistList}`;
+        }
+        return title;
+      })
   );
 
-  let userMarker = L.marker([175, 1140], {
-    icon: icon(userMarkerIcon, [48, 48]),
+  const userMarker = L.marker(currentPos, {
+    icon: icon(userMarkerIcon, [85, 65]),
     zIndexOffset: 1000,
   })
     .addTo(map)
     .bindPopup(t("youAreHere") || "You are here");
 
-  let currentPos = [175, 1140];
-  function gpsToMapCoords(lat, lon) {
-    return [170, 1160];
+  let anchorCoords = null;
+  let anchorMapPos = [...currentPos];
+
+  function gpsToMapDelta(lat1, lon1, lat2, lon2) {
+    const metersPerLat = 111320;
+    const avgLat = (lat1 + lat2) / 2;
+    const metersPerLon = (40075000 * Math.cos((avgLat * Math.PI) / 180)) / 360;
+    return [(lat2 - lat1) * metersPerLat, (lon2 - lon1) * metersPerLon];
   }
-  function animateMarker(to) {
-    function step() {
-      const [cx, cy] = currentPos,
-        [tx, ty] = to;
-      const dx = tx - cx,
-        dy = ty - cy,
-        dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 5) {
-        currentPos = to;
-        userMarker.setLatLng(to);
-        return;
+
+  function smoothMove(start, end, steps = 10) {
+    const interval = 100; // ms
+    const deltaY = (end[0] - start[0]) / steps;
+    const deltaX = (end[1] - start[1]) / steps;
+
+    let i = 0;
+    const moveStep = () => {
+      if (i < steps) {
+        currentPos[0] += deltaY;
+        currentPos[1] += deltaX;
+        currentPos[0] = Math.max(
+          MAP_MIN[0],
+          Math.min(MAP_MAX[0], currentPos[0])
+        );
+        currentPos[1] = Math.max(
+          MAP_MIN[1],
+          Math.min(MAP_MAX[1], currentPos[1])
+        );
+        userMarker.setLatLng(currentPos);
+        i++;
+        setTimeout(moveStep, interval);
       }
-      const stepSize = Math.max(3, dist);
-      currentPos = [cx + (dx / dist) * stepSize, cy + (dy / dist) * stepSize];
-      userMarker.setLatLng(currentPos);
-      requestAnimationFrame(step);
-    }
-    step();
+    };
+    moveStep();
   }
+
   if ("geolocation" in navigator) {
     navigator.geolocation.watchPosition(
-      (pos) =>
-        animateMarker(
-          gpsToMapCoords(pos.coords.latitude, pos.coords.longitude)
-        ),
-      () => {},
-      { enableHighAccuracy: true, maximumAge: 0, timeout: 1000 }
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        if (!anchorCoords) {
+          anchorCoords = { latitude, longitude };
+          anchorMapPos = [...currentPos];
+          return;
+        }
+        const [deltaLat, deltaLon] = gpsToMapDelta(
+          anchorCoords.latitude,
+          anchorCoords.longitude,
+          latitude,
+          longitude
+        );
+
+        const MAP_SCALE = 1.5;
+        let [y, x] = anchorMapPos;
+        y += -deltaLat / MAP_SCALE;
+        x += deltaLon / MAP_SCALE;
+
+        const targetPos = [
+          Math.max(MAP_MIN[0], Math.min(MAP_MAX[0], y)),
+          Math.max(MAP_MIN[1], Math.min(MAP_MAX[1], x)),
+        ];
+
+        anchorMapPos = targetPos;
+        smoothMove([...currentPos], targetPos);
+      },
+      (err) => {
+        alert("Location permission denied or unavailable.");
+        console.error(err);
+      },
+      { enableHighAccuracy: true, maximumAge: 500, timeout: 10000 }
     );
+  } else {
+    alert("Geolocation is not supported by your browser.");
   }
 });
 </script>
