@@ -13,11 +13,57 @@ const FESTIVAL_LON = 5.059573437544879;
 
 const openMap = (e) => {
   if (e) e.stopPropagation();
-  const isApple = /iPhone|iPad|Macintosh/.test(navigator.userAgent);
-  const url = isApple
-    ? `http://maps.apple.com/?ll=${FESTIVAL_LAT},${FESTIVAL_LON}`
-    : `https://www.google.com/maps?q=${FESTIVAL_LAT},${FESTIVAL_LON}`;
-  window.open(url, "_blank");
+  const lat = FESTIVAL_LAT;
+  const lon = FESTIVAL_LON;
+  const label = encodeURIComponent("LoveU Festival");
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isAndroid = /Android/.test(navigator.userAgent);
+
+  if (isIOS) {
+    window.location.href = `https://maps.apple.com/?ll=${lat},${lon}&q=${label}`;
+  } else if (isAndroid) {
+    window.location.href = `geo:${lat},${lon}?q=${lat},${lon}(${label})`;
+  } else {
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`,
+      "_blank"
+    );
+  }
+};
+
+const addToAgenda = () => {
+  const title = "LoveU Festival";
+  const description = "LoveUFestival 2025";
+  const location = "Strijkviertel, Utrecht";
+  const start = "20250906T120000";
+  const end = "20250906T230000";
+
+  const icsContent = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "BEGIN:VEVENT",
+    `SUMMARY:${title}`,
+    `DESCRIPTION:${description}`,
+    `LOCATION:${location}`,
+    `DTSTART:${start}`,
+    `DTEND:${end}`,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
+
+  const blob = new Blob([icsContent], { type: "text/calendar" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "festival.ics";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 0);
 };
 </script>
 
@@ -55,7 +101,6 @@ const openMap = (e) => {
           <h2 class="font-semibold mt-4">{{ t("adress") }}</h2>
           <div>{{ t("adressText") }}</div>
           <div class="mt-2">
-            <span class="font-semibold">{{ t("navigation") }}</span>
             <div class="flex items-center gap-2 mt-2">
               <button
                 @click.stop="openMap"
@@ -85,6 +130,41 @@ const openMap = (e) => {
           </div>
           <div class="mt-4 font-semibold">{{ t("date") }}</div>
           <div>{{ t("dateText") }}</div>
+          <button
+            @click.stop="addToAgenda"
+            class="bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 mt-2 rounded-xl shadow transition"
+          >
+            <svg
+              class="w-5 h-5 inline-block mr-1 align-middle"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="18"
+                rx="2"
+                ry="2"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+              <path
+                d="M16 2v4M8 2v4M3 10h18"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <path
+                d="M12 14v4M10 16h4"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+            </svg>
+            {{ t("addToAgendaButtonText") }}
+          </button>
         </div>
       </transition>
     </div>
