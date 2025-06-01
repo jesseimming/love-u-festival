@@ -221,7 +221,7 @@ const artistInfo = computed(() => {
 </script>
 
 <template>
-  <div class="w-full max-w-6xl mx-auto px-2">
+  <div class="w-full max-w-6xl mx-auto px-2 dark:bg-gray-600">
     <div class="flex flex-col ml-6 justify-center h-10">
       <h1 class="font-bold text-2xl">
         {{ t("scheme")
@@ -236,7 +236,7 @@ const artistInfo = computed(() => {
           <select
             id="day-select"
             v-model="selectedDay"
-            class="block w-full appearance-none bg-white border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 px-4 py-2 pr-10 transition duration-150 ease-in-out shadow-sm"
+            class="block w-full appearance-none bg-white dark:bg-gray-300 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 px-4 py-2 pr-10 transition duration-150 ease-in-out shadow-sm"
           >
             <option value="22nov">22 nov</option>
             <option value="23nov">23 nov</option>
@@ -264,10 +264,10 @@ const artistInfo = computed(() => {
 
     <div class="overflow-x-auto no-scrollbar rounded-2xl">
       <table
-        class="min-w-full bg-white border border-gray-200 rounded-lg shadow"
+        class="min-w-full bg-white dark:bg-gray-300 border border-gray-200 rounded-lg shadow"
       >
         <thead>
-          <tr class="bg-gray-100 text-center">
+          <tr class="bg-gray-100 dark:bg-gray-300 text-center">
             <th class="py-3 px-2 border-b border-gray-200"></th>
             <th
               v-for="col in timeColumns"
@@ -300,13 +300,13 @@ const artistInfo = computed(() => {
               <transition name="modal">
                 <div
                   v-if="showModal"
-                  class="fixed inset-0 bg-gray-100 flex items-center justify-center z-50"
+                  class="fixed inset-0 bg-gray-100 dark:bg-gray-500 flex items-center justify-center z-50"
                   @click.self="closeModal"
                 >
                   <transition name="modal-content">
                     <div v-if="showModal" class="px-6">
                       <div
-                        class="bg-white rounded-2xl p-5 max-w-md w-full relative"
+                        class="bg-white dark:bg-gray-300 rounded-2xl p-5 max-w-md w-full relative"
                       >
                         <button
                           class="absolute top-2 right-4 text-4xl"
@@ -329,7 +329,7 @@ const artistInfo = computed(() => {
                                 {{ selectedArtist?.name }}
                               </h2>
                               <div
-                                class="bg-gray-200 rounded-xl text-xs py-1 w-16 text-center mt-2.5"
+                                class="bg-gray-200 dark:bg-gray-300 rounded-xl text-xs py-1 w-16 text-center mt-2.5"
                               >
                                 <span class="mr-1">{{
                                   selectedArtist?.month

@@ -68,7 +68,7 @@ const addToAgenda = () => {
 </script>
 
 <template>
-  <div class="bg-gray-100 px-6 h-full pb-28 min-h-screen">
+  <div class="bg-gray-100 dark:bg-gray-600 px-6 h-full pb-28 min-h-screen">
     <div class="flex flex-col justify-center h-10">
       <h1 class="font-bold text-2xl">
         {{ t("info") }}<span class="text-4xl font-bold text-vermilion">.</span>
@@ -77,7 +77,7 @@ const addToAgenda = () => {
     </div>
 
     <div
-      class="flex flex-col justify-center mt-10 content-center rounded-2xl bg-white px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
+      class="flex flex-col justify-center mt-10 content-center rounded-2xl bg-white dark:bg-gray-300 px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
       @click="showAlgemeen = !showAlgemeen"
       :style="{ minHeight: showAlgemeen ? '270px' : '60px' }"
     >
@@ -171,7 +171,7 @@ const addToAgenda = () => {
 
     <!-- Accessibility (Bereik) -->
     <div
-      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
+      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white dark:bg-gray-300 px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
       @click="showBereik = !showBereik"
       :style="{ minHeight: showBereik ? '270px' : '60px' }"
     >
@@ -221,7 +221,7 @@ const addToAgenda = () => {
 
     <!-- Lockers -->
     <div
-      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
+      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white dark:bg-gray-300 px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
       @click="showLocker = !showLocker"
       :style="{ minHeight: showLocker ? '220px' : '60px' }"
     >
@@ -252,7 +252,7 @@ const addToAgenda = () => {
 
     <!-- FAQ -->
     <div
-      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
+      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white dark:bg-gray-300 px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
       @click="showFAQ = !showFAQ"
       :style="{ minHeight: showFAQ ? '220px' : '60px' }"
     >
@@ -288,7 +288,7 @@ const addToAgenda = () => {
 
     <!-- Golden GLU -->
     <div
-      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
+      class="flex flex-col justify-center mt-4 content-center rounded-2xl bg-white dark:bg-gray-300 px-10 py-4 cursor-pointer select-none transition-all duration-500 ease-in-out relative shadow"
       @click="showGlu = !showGlu"
       :style="{ minHeight: showGlu ? '220px' : '60px' }"
     >

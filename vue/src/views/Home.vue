@@ -42,7 +42,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="bg-gray-100">
+  <div class="bg-gray-100 dark:bg-gray-600">
     <div class="flex flex-col ml-6 justify-center h-10">
       <h1 class="font-bold text-2xl">
         {{ t("discover")
@@ -107,7 +107,7 @@ onUnmounted(() => {
     <div class="flex flex-col space-y-6 px-4 mt-6 pb-28">
       <!-- First Section -->
       <div
-        class="flex justify-center content-center bg-white w-full rounded-2xl px-4 py-6"
+        class="flex justify-center content-center bg-white dark:bg-gray-300 w-full rounded-2xl px-4 py-6"
       >
         <img class="rounded-2xl w-30 h-25" src="../assets/Mainstage.jpg" />
         <div class="flex flex-col px-3">
@@ -118,7 +118,7 @@ onUnmounted(() => {
 
       <!-- Second Section -->
       <div
-        class="flex justify-center content-center bg-white w-full rounded-2xl px-4 py-6"
+        class="flex justify-center content-center bg-white dark:bg-gray-300 w-full rounded-2xl px-4 py-6"
       >
         <img class="rounded-2xl w-30 h-25" src="../assets/thelake.jpg" />
         <div class="flex flex-col px-3">
@@ -129,7 +129,7 @@ onUnmounted(() => {
 
       <!-- Third Section -->
       <div
-        class="flex justify-center content-center bg-white w-full rounded-2xl px-4 py-6"
+        class="flex justify-center content-center bg-white dark:bg-gray-300 w-full rounded-2xl px-4 py-6"
       >
         <img class="rounded-2xl w-30 h-25" src="../assets/club.jpeg" />
         <div class="flex flex-col px-3">
@@ -140,7 +140,7 @@ onUnmounted(() => {
 
       <!-- Fourth Section -->
       <div
-        class="flex justify-center content-center bg-white w-full rounded-2xl px-4 py-6"
+        class="flex justify-center content-center bg-white dark:bg-gray-300 w-full rounded-2xl px-4 py-6"
       >
         <img class="rounded-2xl w-30 h-25" src="../assets/hangar.jpeg" />
         <div class="flex flex-col px-3">

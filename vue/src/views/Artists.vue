@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import artists from "../assets/artists.json";
 import { useI18n } from "vue-i18n";
-const { t, locale } = useI18n(); // <-- add locale here
+const { t, locale } = useI18n();
 
 const getImg = (img) => new URL(`../assets/${img}`, import.meta.url).href;
 
@@ -26,7 +26,7 @@ const artistInfo = computed(() => {
 </script>
 
 <template>
-  <div class="bg-gray-100">
+  <div class="bg-gray-100 dark:bg-gray-600">
     <div class="flex flex-col ml-6 justify-center h-10 mt-8">
       <h1 class="font-bold text-2xl">
         {{ t("artists")
@@ -38,7 +38,7 @@ const artistInfo = computed(() => {
       <div
         v-for="artist in artists"
         :key="artist.name"
-        class="flex items-start bg-white w-full rounded-2xl px-4 py-6 cursor-pointer relative"
+        class="flex items-start bg-white dark:bg-gray-300 w-full rounded-2xl px-4 py-6 cursor-pointer relative"
         @click="openModal(artist)"
       >
         <img
@@ -67,7 +67,9 @@ const artistInfo = computed(() => {
       >
         <transition name="modal-content">
           <div v-if="showModal" class="px-6">
-            <div class="bg-white rounded-2xl p-5 max-w-md w-full relative">
+            <div
+              class="bg-white dark:bg-gray-300 rounded-2xl p-5 max-w-md w-full relative"
+            >
               <button
                 class="absolute top-2 right-4 text-4xl"
                 @click="closeModal"

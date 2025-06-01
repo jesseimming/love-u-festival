@@ -43,7 +43,10 @@ export default defineConfig({
             url: "https://fonts.googleapis.com/css?family=Material+Symbols+Rounded|Material+Icons+Outlined",
             revision: null,
           },
-          // Add any other external resources you want to precache
+          {
+            url: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined",
+            revision: null,
+          },
         ],
         runtimeCaching: [
           {

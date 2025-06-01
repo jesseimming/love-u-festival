@@ -1,8 +1,9 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 body {
   font-family: "Sansation";
-  background-color: #f3f4f6;
+  @apply bg-gray-100 dark:bg-gray-600;
 }
 
 @font-face {
