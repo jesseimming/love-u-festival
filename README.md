@@ -44,9 +44,22 @@ offline ondersteuning en installatie op mobiel.
 
 ## Keuze's
 
-Vue 3: Modern en makkelijk te gebruiken
-Tailwind: Snelle styling en goede functies
-I18n: Meertalig en goed bij vue
-Vite: snel te gebruiken, goede ondersteuning.
-VitePWA plugin: Goede instructies online, snel.
-Leaflet: Handig voor interactieve kaarten.
+```arch
+-[Vue 3]
+Modern en makkelijk te gebruiken
+
+-[Tailwind]
+Snelle styling en goede functies
+
+-[I18n]
+Meertalig en goed bij vue
+
+-[Vite]
+Snel te gebruiken, goede ondersteuning.
+
+-[VitePWA]
+Goede instructies online, snel.
+
+-[Leaflet]
+Handig voor interactieve kaarten.
+```
