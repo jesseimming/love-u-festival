@@ -36,7 +36,7 @@
       </p>
       <div style="margin-top: 1.5rem">
         <span style="display: block; margin-bottom: 0.5rem; color: #888">
-          Install not working?
+          Installation not working?
         </span>
         <a href="/home" class="fallback-link" @click.prevent="closePrompt">
           Click this link
