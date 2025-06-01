@@ -19,9 +19,9 @@ Npm run dev
 Npm run build
 ```
 
-```arch
-Architectuur:
+## Architectuur:
 
+```arch
 -[src/]
 App.vue: Basis van app
 main.js: Alle imports
