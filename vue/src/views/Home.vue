@@ -34,6 +34,25 @@ onMounted(() => {
   intervalId = setInterval(() => {
     currentSlide.value = (currentSlide.value + 1) % newsSlides.length;
   }, 4500);
+
+  // Show notification after 5 seconds
+  setTimeout(() => {
+    if ("Notification" in window) {
+      if (Notification.permission === "granted") {
+        new Notification("Don't leave!", {
+          body: "Stay tuned for more festival news!",
+        });
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then((permission) => {
+          if (permission === "granted") {
+            new Notification("Don't leave!", {
+              body: "Stay tuned for more festival news!",
+            });
+          }
+        });
+      }
+    }
+  }, 5000);
 });
 
 onUnmounted(() => {

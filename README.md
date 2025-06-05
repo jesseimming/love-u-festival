@@ -4,19 +4,25 @@ Deze applicatie is gebouwd met [Vue 3](https://vuejs.org/) en [Vite](https://vit
 
 ## Installatie
 
+## Installatie
+
 ```steps
-1. **Vereisten:**
+1. **Repository klonen:**
+   git clone https://github.com/jesseimming/love-u-festival.git
+   cd vue
+
+2. **Vereisten:**
    - [Node.js](https://nodejs.org/) (aanbevolen versie 18+)
    - [npm](https://www.npmjs.com/) of [bun](https://bun.sh/)
 
-2. Project installeren:
-Npm install
+3. Project installeren:
+   npm install
 
-3. Ontwikkelserver starten:
-Npm run dev
+4. Ontwikkelserver starten:
+   npm run dev
 
-4. **Productie build maken:**
-Npm run build
+5. **Productie build maken:**
+   npm run build
 ```
 
 ## Architectuur:
